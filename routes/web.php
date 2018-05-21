@@ -18,6 +18,7 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category/{id}','HomeController@category');
+Route::post('/search','HomeController@search');
 Route::get('/', 'PagesController@index');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/category/add', 'CategoryController@add');
@@ -32,4 +33,5 @@ Route::post('/comment/{id}','PostsController@comment');
 Route::get('/profile','ProfileController@profile');
 Route::post('/addProfile','ProfileController@addProfile');
 Route::get('/dashboards','DashboardsController@dashboard');
+Route::get('/categories','CategoriesController@index');
 ?>

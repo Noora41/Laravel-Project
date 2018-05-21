@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('category_id');
             $table->string('title');
-            $table->mediumText('ingredients');
-            $table->mediumText('instructions');
+            $table->mediumText('ingredients')->nullable();;
+            $table->mediumText('instructions')->nullable();;
             $table->integer('totallike')->default(0);
             $table->timestamps();
         });

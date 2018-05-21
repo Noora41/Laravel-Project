@@ -58,8 +58,6 @@ class PostsController extends Controller
         $this->validate($request,[
             'category_id'=>'required',
             'title'=>'required',
-            'ingredients'=>'required',
-            'instructions'=>'required',
             'cover_image'=>'image|nullable|max:1999'
         ]);
 
@@ -83,8 +81,9 @@ class PostsController extends Controller
         $post=new Post;
         $post->category_id=$request->input('category_id');
         $post->title=$request->input('title');
-        $post->ingredients=$request->input('ingredients');
         $post->instructions=$request->input('instructions');
+        $post->ingredients=$request->input('ingredients');
+        $post->type=$request->input('type');
         $post->user_id= Auth::user()->id;
         $post->cover_image=$fileNameToStore;
         $post->save();
@@ -144,8 +143,9 @@ class PostsController extends Controller
         $this->validate($request,[
             'category_id'=>'required',
             'title'=>'required',
+            'instructions'=>'required',
             'ingredients'=>'required',
-            'instructions'=>'required'
+            'cover_image'=>'image|nullable|max:1999'
         ]);
 
          //Handle file upload
@@ -167,8 +167,9 @@ class PostsController extends Controller
         $post=Post::find($id);
         $post->category_id=$request->input('category_id');
         $post->title=$request->input('title');
-        $post->ingredients=$request->input('ingredients');
         $post->instructions=$request->input('instructions');
+        $post->ingredients=$request->input('ingredients');
+        $post->type=$request->input('type');
         if($request->hasFile('cover_image')){
             $post->cover_image=$fileNameToStore;
         } 
